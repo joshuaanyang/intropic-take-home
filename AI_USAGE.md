@@ -89,11 +89,10 @@ fixed by giving each request its own connection.
 
 ## Time and remaining work
 
-- About 3 hours on Friday reading the brief and contract, discussing the
-  design and setting up my environment, then one build session of about
-  2 h 40 min on Saturday morning, plus about 30 minutes on documentation.
-  This is longer than the suggested three hours; the extra went on
-  understanding the financial conventions and on environment setup.
+- About 3 h 15 min of focused work: roughly 40 minutes on Friday reading
+  the brief and contract and agreeing the design, about 2 h 20 min on
+  Saturday building and verifying, and about 15 minutes on documentation.
+  Installing Docker and setting up my Python environment are not included.
 - Not built: the optional daily P&L (contract section 6), an import history,
   and an automated end-to-end test on the supplied files.
 - Next priorities are listed in `README.md`, section 5.

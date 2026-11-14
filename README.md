@@ -148,17 +148,20 @@ Interactive API docs are at http://localhost:8000/docs.
 
 ## 5. Time spent and what I would prioritise next
 
+Focused working time, approximately:
+
 | Activity | Approx. time |
 |---|---|
-| Friday: reading the brief and contract, design discussion, installing Docker and setting up the environment | about 3 hours |
-| Saturday: backend (storage, reference loading, import rules, valuation, API) with tests | about 1 h 30 min |
-| Saturday: running the supplied files, hand-checking figures, error-message and test additions | about 30 min |
-| Saturday: front end, Docker build, five-file journey in Docker | about 35 min |
-| README and AI usage notes | about 30 min |
+| Friday: reading the brief and contract, agreeing the design | 40 min |
+| Saturday: backend (storage, reference loading, import rules, valuation, API) with tests | 1 h 20 min |
+| Saturday: running the supplied files, hand-checking figures, error-message and test additions | 25 min |
+| Saturday: front end, Docker build, five-file journey in Docker | 35 min |
+| README and AI usage notes | 15 min |
+| **Total** | **about 3 h 15 min** |
 
-The build itself was one sitting of roughly 2 h 40 min on Saturday morning.
-The time before that went on understanding the contract and choosing the
-design, and on environment setup (I did not have Docker installed).
+This was spread over Friday evening and Saturday morning rather than done in
+one sitting. It does not include installing Docker and setting up a Python
+environment on my machine, which I did not count as part of the exercise.
 
 Next, in order:
 
