@@ -63,12 +63,12 @@ def validate_row(raw: dict[str, str], portfolios: set[str], instruments: set[str
 
     timestamp = raw["timestamp"]
     if not TIMESTAMP_RE.match(timestamp):
-        reasons.append("timestamp must be exactly YYYY-MM-DDTHH:MM:SSZ")
+        reasons.append(f"timestamp must be exactly YYYY-MM-DDTHH:MM:SSZ, got '{timestamp}'")
     else:
         try:
             datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")  # rejects 2026-02-30 etc.
         except ValueError:
-            reasons.append("timestamp is not a real date and time")
+            reasons.append(f"timestamp is not a real date and time, got '{timestamp}'")
         else:
             if timestamp[:10] not in valid_dates:
                 reasons.append(f"trade date {timestamp[:10]} is not a valuation date")
@@ -77,13 +77,13 @@ def validate_row(raw: dict[str, str], portfolios: set[str], instruments: set[str
         reasons.append(f"side must be BUY or SELL, got '{raw['side']}'")
 
     if not INTEGER_RE.match(raw["quantity"]) or int(raw["quantity"]) <= 0:
-        reasons.append("quantity must be a positive whole number")
+        reasons.append(f"quantity must be a positive whole number, got '{raw['quantity']}'")
 
     price_text = raw["price"]
     if not PRICE_RE.match(price_text) or Decimal(price_text) <= 0:
-        reasons.append("price must be a positive decimal number")
+        reasons.append(f"price must be a positive decimal number, got '{price_text}'")
     elif "." in price_text and len(price_text.split(".")[1]) > 4:
-        reasons.append("price has more than 4 decimal places")
+        reasons.append(f"price has more than 4 decimal places, got '{price_text}'")
 
     if reasons:
         return None, reasons

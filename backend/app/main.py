@@ -6,12 +6,14 @@ from pathlib import Path
 
 from fastapi import Depends, FastAPI, HTTPException, UploadFile
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from . import db, importer, reference, valuation
 
 DATA_DIR = Path(os.environ.get("DATA_DIR", Path(__file__).resolve().parents[2] / "data"))
 DB_PATH = os.environ.get("DB_PATH", "portfolio.db")
 
+STATIC_DIR = os.environ.get("STATIC_DIR")  # the built React files, set in Docker
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -80,3 +82,7 @@ def position(portfolio_id: str, instrument_id: str, conn=Depends(get_conn)):
             return item
     raise HTTPException(status_code=404, detail=f"no trades for '{instrument_id}' in '{portfolio_id}'")
 
+# Serve the built React app from the same server, so there is one address
+# and one port. This comes last so that it never hides an /api route.
+if STATIC_DIR and Path(STATIC_DIR).is_dir():
+    app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="frontend")

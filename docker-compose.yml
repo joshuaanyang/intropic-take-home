@@ -1,0 +1,14 @@
+# One command starts everything:  docker compose up --build
+# Then open http://localhost:8000
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # Imported trades live here, outside the container, so they are
+      # still there after the application is restarted.
+      - portfolio-db:/var/lib/portfolio
+
+volumes:
+  portfolio-db:
