@@ -6,8 +6,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      # Imported trades live here, outside the container, so they are
-      # still there after the application is restarted.
+      # Imported trades on here outside the container, survive restarts
       - portfolio-db:/var/lib/portfolio
 
 volumes:
