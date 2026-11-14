@@ -70,6 +70,9 @@
 - **Contract behaviours seen on the real data:** a closed position with zero
   value and non-zero P&L (ZZLUM03 in P001), and a carried-forward price
   flagged with its date while FX stays at the valuation date (ZZCAR12).
+- **Restart.** Ran `docker compose down` then `docker compose up`; the 670
+  imported trades and the P001 totals were unchanged, and reference rows
+  were not duplicated.
 
 **One suggestion I rejected.** Claude's first proposal was server-rendered
 HTML pages (Jinja) with a plain Python start command and no Docker, as the
